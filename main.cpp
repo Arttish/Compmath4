@@ -6,17 +6,18 @@
 
 int main(int argc, char** argv) {
     int i = 1;
-    double start, end, step;
+    double start, end, step, noize;
 
     start = std::stod(argv[i++]);
-    end = std::stod(argv[i++]);;
+    end = std::stod(argv[i++]);
     step = std::stod(argv[i++]);
+    noize = std::stod(argv[i++]);
 
     std::ofstream s("../data.txt");
     std::ofstream answer("../ans.txt");
     std::ofstream res("../res.txt");
 
-    Generator gen(5, &s);
+    Generator gen(noize, &s);
     Generator ans_gen(0, &answer);
     Generator res_gen(0, &res);
 
