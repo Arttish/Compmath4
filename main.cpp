@@ -3,7 +3,6 @@
 #include "functions/func1.h"
 #include "pregresion/Polynomial_regression.h"
 #include "functions/Polynomial.h"
-#include "functions/func2.h"
 
 int main(int argc, char** argv) {
     int i = 1;
