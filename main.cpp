@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     Generator ans_gen(0, &answer);
     Generator res_gen(0, &res);
 
-    IFunc* f = new func2;
+    IFunc* f = new func1;
 
     auto data = gen.generate(f, start, end, step);
     ans_gen.generate(f, start, end, step);
