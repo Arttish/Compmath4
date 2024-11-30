@@ -3,11 +3,12 @@
 #include "functions/func1.h"
 #include "pregresion/Polynomial_regression.h"
 #include "functions/Polynomial.h"
-#include "functions/func2.h"
 
 int main(int argc, char** argv) {
     int i = 1;
     double start, end, step, noise;
+
+    bool transform = true;
 
     start = std::stod(argv[i++]);
     end = std::stod(argv[i++]);
@@ -22,16 +23,16 @@ int main(int argc, char** argv) {
     Generator ans_gen(0, &answer);
     Generator res_gen(0, &res);
 
-    IFunc* f = new func2;
+    IFunc* f = new func1;
 
-    auto data = gen.generate(f, start, end, step);
-    ans_gen.generate(f, start, end, step);
+    auto data = gen.generate(f, start, end, step, transform);
+    ans_gen.generate(f, start, end, step, transform);
 
-    Polynomial_regression pr;
+    Polynomial_regression pr{};
 
     IFunc* p = new Polynomial(pr.fit(data));
 
-    res_gen.generate(p, start, end, step);
+    res_gen.generate(p, data.first);
 
     delete f;
     delete p;

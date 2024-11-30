@@ -9,7 +9,6 @@
 
 class Generator {
 protected:
-
     std::ostream* stream;
 
     std::mt19937_64 gen;
@@ -17,7 +16,8 @@ protected:
 
 public:
     explicit Generator(double noise, std::ostream *stream = nullptr);
-    std::pair<std::vector<double>, std::vector<double>> generate(IFunc* func, double start, double end, double step);
+    std::pair<std::vector<double>, std::vector<double>> generate(IFunc* func, double start, double end, double step, bool transform = false);
+    std::pair<std::vector<double>, std::vector<double>> generate(IFunc* func, std::vector<double> X);
     ~Generator() = default;
 };
 
