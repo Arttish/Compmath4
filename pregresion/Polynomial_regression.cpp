@@ -8,7 +8,7 @@ std::vector<double> Polynomial_regression::fit(const std::vector<double>& data_x
     std::vector<std::vector<double>> XT, XTX,L(degree + 1, std::vector<double>(degree + 1, 0));
     std::vector<double> XTY, B(degree + 1, 0), z(degree + 1, 0);
     std::vector<double> tmp;
-    long double a;
+    double a;
     for (int j = 0; j <= degree; ++j) {
         tmp.clear();
         tmp.reserve(data_x.size());
