@@ -2,5 +2,6 @@
 #include <cmath>
 
 double func1::calculate(double x) {
-    return std::pow(x, 4) + std::pow(x, 3) - 5 * std::pow(x, 2) - x + 5;
+    double y = x - 1e6;
+    return 1e8 - (y * y * y) + 5 * y * y;
 }

@@ -4,6 +4,9 @@
 #include <cmath>
 
 class Polynomial_regression {
+    double mean;
+    double std;
+
     std::vector<double> fit(
             const std::vector<double>& data_x,
             const std::vector<double>& data_y,

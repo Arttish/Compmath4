@@ -1,13 +1,14 @@
 #include "Polynomial_regression.h"
 
 #include <utility>
+#include <algorithm>
 #include "../functions/Polynomial.h"
 
 std::vector<double> Polynomial_regression::fit(const std::vector<double>& data_x, const std::vector<double>& data_y, int degree) {
     std::vector<std::vector<double>> XT, XTX,L(degree + 1, std::vector<double>(degree + 1, 0));
     std::vector<double> XTY, B(degree + 1, 0), z(degree + 1, 0);
     std::vector<double> tmp;
-    double a;
+    long double a;
     for (int j = 0; j <= degree; ++j) {
         tmp.clear();
         tmp.reserve(data_x.size());
@@ -82,7 +83,7 @@ std::vector<double> Polynomial_regression::fit(const std::vector<double>& data_x
 
 std::vector<double> Polynomial_regression::fit(const std::vector<double> &data_x, const std::vector<double> &data_y) {
     std::vector<double> res, tmp;
-    double bic_res, bic_tmp;
+    double bic_res, bic_tmp, rss;
     unsigned int n = data_x.size();
 
     res = fit(data_x, data_y, 0);
@@ -90,7 +91,8 @@ std::vector<double> Polynomial_regression::fit(const std::vector<double> &data_x
 
     for (int i = 1; i <= 5; ++i) {
         tmp = fit(data_x, data_y, i);
-        bic_tmp = n * std::log(residual_square_sum(tmp, data_x, data_y) / n) + (i + 1) * std::log(n);
+        rss = residual_square_sum(tmp, data_x, data_y);
+        bic_tmp = n * std::log( rss / n) + (i + 1) * std::log(n);
         if (bic_tmp < bic_res){
             res = std::move(tmp);
             bic_res = bic_tmp;
