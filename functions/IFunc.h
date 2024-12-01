@@ -1,5 +1,6 @@
 #ifndef IFUNC
 #define IFUNC
+#include <ostream>
 
 class IFunc {
 public:

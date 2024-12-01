@@ -13,3 +13,11 @@ double Polynomial::calculate(double x) {
     }
     return res;
 }
+
+std::ostream &operator<<(std::ostream &os, Polynomial &p) {
+    os << p.coefficients[0];
+    for (int i = 1; i < p.coefficients.size(); ++i) {
+        os << (p.coefficients[i] < 0? " - " : " + ") << std::abs(p.coefficients[i]) << "x^" << i;
+    }
+    return os;
+}
