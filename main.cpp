@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
         res << result.first[j] << " " << result.second[j] << '\n';
     }
 
-    std::cout << (*(dynamic_cast<Polynomial*>(p)));
+    std::cout << (*(dynamic_cast<Polynomial*>(p))) << '\n';
     delete f;
     delete p;
     return 0;
