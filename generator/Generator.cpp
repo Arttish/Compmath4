@@ -1,6 +1,7 @@
 #include "Generator.h"
 #include <fstream>
 #include <random>
+#include <sstream>
 
 std::random_device rd;
 
@@ -14,10 +15,11 @@ Generator::generate(IFunc *func, double start, double end, double step) {
         x += step;
     }
 
-    if (stream)
+    if (stream) {
+        stream->precision(16);
         for (int i = 0; i < data.first.size(); ++i)
             *stream << data.first[i] << ' ' << data.second[i] << '\n';
-
+    }
     return data;
 }
 

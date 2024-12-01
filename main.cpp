@@ -36,10 +36,11 @@ int main(int argc, char** argv) {
 
     result = std::make_pair(sx.transform_back(result.first), sy.transform_back(result.second));
 
+    res.precision(16);
     for (int j = 0; j < result.first.size(); ++j) {
         res << result.first[j] << " " << result.second[j] << '\n';
     }
-
+    std::cout.precision(16);
     std::cout << (*(dynamic_cast<Polynomial*>(p))) << '\n';
     delete f;
     delete p;
